@@ -67,6 +67,12 @@ class FreshBooksRequest {
     {
         self::$_domain = $domain;
         self::$_token = $token;
+        self::$_disable_ssl_verification = false;
+    }
+    
+    public static function disableSSLVerification()
+    {
+        self::$_disable_ssl_verification = true;
     }
 
     /*
@@ -163,7 +169,9 @@ class FreshBooksRequest {
         curl_setopt($ch, CURLOPT_TIMEOUT, 40); // times out after 40s
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data); // add POST fields
         curl_setopt($ch, CURLOPT_USERPWD, self::$_token . ':X');
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        if (self::$_disable_ssl_verification) {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        }
 
         $result = curl_exec($ch);
 
