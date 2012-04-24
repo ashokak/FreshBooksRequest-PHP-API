@@ -69,7 +69,7 @@ class FreshBooksRequest {
         self::$_token = $token;
         self::$_disable_ssl_verification = false;
     }
-    
+   
     public static function disableSSLVerification()
     {
         self::$_disable_ssl_verification = true;
