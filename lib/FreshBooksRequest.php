@@ -163,6 +163,7 @@ class FreshBooksRequest {
         curl_setopt($ch, CURLOPT_TIMEOUT, 40); // times out after 40s
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data); // add POST fields
         curl_setopt($ch, CURLOPT_USERPWD, self::$_token . ':X');
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
         $result = curl_exec($ch);
 
