@@ -69,7 +69,19 @@ class FreshBooksRequest {
         self::$_token = $token;
         self::$_disable_ssl_verification = false;
     }
-    
+
+    /*
+     * Turn off SSL peer verification.
+     *
+     * You may need to do this if your curl installation does not have
+     * the proper certificate authority information.
+     *
+     * If possible, fix your curl configuration instead as with this
+     * option set, intermediaries will be able to pretend to be
+     * FreshBooks.
+     *
+     * @return null
+     */
     public static function disableSSLVerification()
     {
         self::$_disable_ssl_verification = true;
